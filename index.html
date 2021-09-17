@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVM</title>
+    <style>
+        *,
+        ::after,
+        ::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #9EAEC6;
+            margin: 15px;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .top-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            height: 81%;
+        }
+
+        .evm-body {
+            max-width: 480px;
+            width: 100%;
+            height: 686px;
+            margin: auto;
+            background-color: #1F262C;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .paper {
+            height: 90%;
+            width: 300px;
+            background-color: rgb(255, 255, 255);
+            margin-left: 25px;
+            border-radius: 15px;
+        }
+
+        .buttons {
+            width: 120px;
+            height: auto;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .buttons li {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 25px;
+            border-radius: 20px;
+            border: none;
+            background-color: rgb(255, 255, 255);
+        }
+
+        li {
+            text-align: center;
+        }
+
+        .confirmation {
+            width: 100%;
+            height: 10%;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confirmation button {
+            margin: 0 30px;
+            border-radius: 10px;
+            padding: 15px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .confirmation button:first-child {
+            background-color: green;
+        }
+
+        .confirmation button:last-child {
+            background-color: red;
+        }
+
+        .paper li {
+            border-bottom: 1px solid black;
+            margin: 0;
+        }
+
+        .paper li:last-child {
+            border-bottom: none;
+        }
+
+        .paper li {
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        .paper li span:first-child {
+            text-align: left;
+            display: block;
+            width: 80%;
+            padding-left: 15px;
+        }
+
+        .paper li span:last-child {
+            font-size: 30px;
+            display: block;
+            width: 20%;
+            text-align: right;
+            padding-right: 15px;
+        }
+
+        .buttons li:first-child {
+            margin-top: 0;
+        }
+
+        .lamp {
+            width: 20px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="evm-body">
+            <div class="top-area">
+                <div class="paper">
+
+
+                </div>
+                <div class="buttons">
+                    <ul>
+                        <li><button class="btn"></button><button value="ক"></button></li>
+                        <li><button class="btn"></button><button value="খ"></button></li>
+                        <li><button class="btn"></button><button value="গ"></button></li>
+                        <li><button class="btn"></button><button value="ঘ"></button></li>
+                        <li><button class="btn"></button><button value="ঙ"></button></li>
+                        <li><button class="btn"></button><button value="চ"></button></li>
+                        <li><button class="btn"></button><button value="ছ"></button></li>
+                        <li><button class="btn"></button><button value="জ"></button></li>
+                        <li><button class="btn"></button><button value="ঝ"></button></li>
+                        <li><button class="btn"></button><button value="ঞ"></button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="confirmation">
+                <button id="confirm">confirm</button>
+                <button id='cancel'>cancel</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        const paper = document.querySelector('.paper')
+        const buttons = document.querySelectorAll('.buttons button')
+        let marka = ''
+        let count = 0;
+        for (const button of buttons) {
+            button.addEventListener('click', (e) => {
+                if (count === 0) {
+                    for (const btn of buttons) {
+
+                    }
+                    e.target.parentElement.childNodes[0].style.background = 'red'
+                    marka = button.value;
+                    count++
+                }
+
+            })
+        }
+        document.getElementById('confirm').addEventListener('click', () => {
+            if (!marka) {
+                return;
+            }
+            document.getElementById('confirm').style.color = 'white'
+            const ul = paper.children[0];
+            ul.remove()
+            console.log(marka);
+            if (marka == 'ঘ') {
+                paper.innerHTML = `
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 90%;">
+                        <h1 style='text-align:center;font-size: 50px;'><img src="https://ecstatic-meitner-503391.netlify.app/lamp.png" alt=""></h1>
+                        <p style="text-align: center;">আপনি <img style="width: 20px;margin-bottom: -10px;" src="https://ecstatic-meitner-503391.netlify.app/lamp.png" alt=""> প্রতিকে ভোট দিয়েছেন।</p>
+                    </div>
+                `
+                setTimeout(() => {
+                    appCandidate()
+
+                    for (const button of buttons) {
+                        if (count === 0) {
+                            for (const btn of buttons) {
+                                btn.style.background = 'white'
+                                document.getElementById('confirm').style.color = 'black'
+                            }
+                        }
+                    }
+                }, 5000);
+
+            } else {
+                paper.innerHTML = `                 
+               <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 90%;">
+                        <h1 style='text-align:center;font-size: 50px;'>${marka}</h1>
+                        <p style="text-align: center;">আপনি ${marka} প্রতিকে ভোট দিয়েছেন।</p>
+                    </div>`
+                setTimeout(() => {
+                    appCandidate()
+
+                    for (const button of buttons) {
+                        if (count === 0) {
+                            for (const btn of buttons) {
+                                btn.style.background = 'white'
+                                document.getElementById('confirm').style.color = 'black'
+                            }
+                        }
+                    }
+                }, 5000);
+            }
+
+        });
+
+        document.getElementById('cancel').addEventListener('click', () => {
+            count = 0;
+            marka = '';
+            const lightBtn = document.querySelectorAll('.btn')
+            for (const btn of lightBtn) {
+                btn.style.background = 'white'
+            }
+        })
+
+        function appCandidate() {
+            paper.innerHTML = ''
+            marka = ''
+            count = 0;
+            const ul = document.createElement('ul')
+            ul.innerHTML = ` <li><span>সংসদ সদস্য-১</span><span>ক</span></li>
+                        <li><span>সংসদ সদস্য-২</span><span>খ</span></li>
+                        <li><span>সংসদ সদস্য-৩</span><span>গ</span></li>
+                        <li><span>মুহাম্মহ মকসুদ আলম</span><span><img class="lamp"
+                                    src="https://ecstatic-meitner-503391.netlify.app/lamp.png" alt=""></span></li>
+                        <li><span>সংসদ সদস্য-৫</span><span>ঙ</span></li>
+                        <li><span>সংসদ সদস্য-৬</span><span>চ</span></li>
+                        <li><span>সংসদ সদস্য-৭</span><span>ছ</span></li>
+                        <li><span>সংসদ সদস্য-৮</span><span>জ</span></li>
+                        <li><span>সংসদ সদস্য-৯</span><span>ঝ</span></li>
+                        <li><span>সংসদ সদস্য-১০</span><span>ঞ</span></li>`
+            paper.appendChild(ul)
+        }
+        appCandidate()
+
+    </script>
+</body>
+
+</html>
